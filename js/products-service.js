@@ -10,7 +10,7 @@ class ProductsService {
         }
         return this.products;
     }
-    getProductsById(id) {
+    async getProductsById(id) {
         const products = await this.getProducts();
         return products.find(product => product.id === id);
     }
