@@ -13,7 +13,7 @@ class ProductList {
         this.container.innerHTML = productListDomString;
         this.addEventListeners();
 
-    }
+    } 
     createProductDomString(product) {
         return `<article class="card col-12 col-sm-6 col-sd-4 col-lg-3">
           <img src="img/${product.image}" class="card-img-top" alt="${product.title}">
