@@ -38,7 +38,7 @@ class ProductList {
     async showProductInfo(Event) {
         const id = Event.target.dataset.id;
         const product = await this.productsService.getProductById(id);
-        const modal = document.querySelector('.product-info-modal');
+        const modal = document.querySelector('#product-info-modal');
         modal.querySelector('.modal-title').innerHTML = product.title;
         modal.querySelector('.product-image').src = `img/$(product.image)`;
         modal.querySelector('.product-description').innerHTML = product.description;
