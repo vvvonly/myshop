@@ -11,7 +11,7 @@ class ProductList {
             productListDomString += this.createProductDomString(product);
         });
         this.container.innerHTML = productListDomString;
-       // this.addEventListeners();
+        this.addEventListeners();
 
     }
     createProductDomString(product) {
@@ -21,9 +21,29 @@ class ProductList {
             <h5 class="card-title">${product.title}</h5>
             <p class="card-text">${product.description}</p>
             <a href="#" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#prodact-info-modal" data-id=${product.id}>Info</a>
-            <a href="#" class="btn btn-primary" data-id=${product.id}>${product.price}Buy</a>
+            <a href="#" class="btn btn-primary btn-buy" data-id=${product.id}>${product.price}Buy</a>
           </div>
         </article>`;
+    }
+
+    addEventListeners() {
+        document.querySelectorAll('.btn-info').forEach(btn => {
+            btn.addEventListener('click', this.showProductInfo.bind(this));
+        })
+        document.querySelectorAll('.btn-buy').forEach(btn => {
+            btn.addEventListener('click', this.addProductToCart.bind(this));
+        })
+    }
+
+    async showProductInfo() {
+        const id = Event.target.dataset.id;
+        const product = await this.productsService.getProductsById(id);
+        const modal = document.querySelector('#product-info-modal');
+        modal.querySelector('.modal-title').innerHTML = product.title;
+        modal.querySelector('.product-image').src = `img/$(product.image)`;
+        modal.querySelector('.product-description').innerHTML = product.description;
+        modal.querySelector('.product-price').innerHTML = product.price
+        modal.querySelector('.btn-buy').dataset.id = product.id;
     }
 }
 new ProductList();
