@@ -45,5 +45,11 @@ class ProductList {
         modal.querySelector('.product-price').innerHTML = product.price
         modal.querySelector('.btn-buy').dataset.id = product.id;
     }
+    async addProductToCart() {
+        const id = Event.target.dataset.id;
+        const product = await this.productsService.getProductsById(id);
+        const cart = new Cart();
+        cart.addProduct(product);
+    }
 }
 new ProductList();
