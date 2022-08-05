@@ -35,7 +35,7 @@ class ProductList {
         })
     }
 
-    async showProductInfo() {
+    async showProductInfo(Event) {
         const id = Event.target.dataset.id;
         const product = await this.productsService.getProductById(id);
         const modal = document.querySelector('#product-info-modal');
