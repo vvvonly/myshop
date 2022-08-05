@@ -36,7 +36,7 @@ class ProductList {
     }
 
     async showProductInfo() {
-        const id = Event.target.dataset.id;
+        const id = event.target.dataset.id;
         const product = await this.productsService.getProductsById(id);
         const modal = document.querySelector('#product-info-modal');
         modal.querySelector('.modal-title').innerHTML = product.title;
@@ -46,7 +46,7 @@ class ProductList {
         modal.querySelector('.btn-buy').dataset.id = product.id;
     }
     async addProductToCart() {
-        const id = Event.target.dataset.id;
+        const id = event.target.dataset.id;
         const product = await this.productsService.getProductsById(id);
         const cart = new Cart();
         cart.addProduct(product);
