@@ -11,7 +11,7 @@ class ProductList {
             productListDomString += this.createProductDomString(product);
         });
         this.container.innerHTML = productListDomString;
-        this.addEventListeners();
+       // this.addEventListeners();
 
     }
     createProductDomString(product) {
